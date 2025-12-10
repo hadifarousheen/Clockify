@@ -5,6 +5,8 @@ body{
 .main-container{
     padding: 0;
     margin:0;
+        border:1px solid red;
+    /* height: 100vh; */
 }
 nav{
     background-color: rgb(120, 176, 178);
@@ -40,11 +42,11 @@ nav{
 }
 
 .secondary-container{
-    border:1px solid;
+    border:1px solid red;
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* grid-template-rows: 50% 50%; */
-
+ margin-top: 30px;
 
 }
 .secondary-container div{
