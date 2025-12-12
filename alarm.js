@@ -18,6 +18,13 @@ for(let i=0;i<list.length;i++){
     h1.innerText=list[i].hour+' : '+ list[i].minute+' : '+list[i].ampm;
     const button=document.createElement('button')
     button.innerText="Delete Alarm";
+    button.addEventListener('click',()=>{
+      h1.remove();
+      button.remove();
+      const alarmlist=JSON.parse(localStorage.getItem('alarmList'));
+      alarmlist.splice(i,1);
+      localStorage.setItem('alarmList',JSON.stringify(alarmlist))
+    })
     alarms.appendChild(h1)
     alarms.appendChild(button)
   
@@ -60,3 +67,17 @@ save.addEventListener('click',()=>{
 // setInterval(function() {
 //   window.location.reload();
 // }, 1000);
+
+setInterval(()=>{
+  const timeNow=new Date();
+  const nowHour=timeNow.getHours();
+  const nowMinute=timeNow.getMinutes();
+  const alarmsStored=JSON.parse(localStorage.getItem('alarmList'));
+  for(let i=0;i<alarmsStored.length;i++){
+    if(nowHour==alarmsStored[i].hour && nowMinute==alarmsStored[i].minute){
+      var audio = new Audio('wrong.mp3');
+audio.play();
+
+    }
+  }
+},1000)
