@@ -12,6 +12,7 @@ const secondDisplay=document.querySelector('.secondDisplay')
 let hourCount=0;
 let minuteCount=0;
 let secondCount=0;
+let defaultSecondCount=60;
 hour.addEventListener('change',(e)=>{
   hourCount=e.target.value;
 })
@@ -25,32 +26,37 @@ second.addEventListener('change',(e)=>{
 })
 
 start.addEventListener('click',()=>{
-    // while(hourCount>0){
-    // hourDisplay.innerText=hourCount;
-    // hourCount--;
-    //     hourDisplay.innerText=hourCount;
+   
   hourDisplay.innerText=hourCount
     minuteDisplay.innerText=minuteCount;
     secondDisplay.innerText=secondCount;
-    // }
-//   let hourId=  setInterval(()=>{
-//        hourDisplay.innerText=hourCount;
-       
-//     hourCount--; 
-//     if(hourCount <0)
-//        {
-//         clearInterval(hourId)
-//        }
-//     },1000)
-
-let secondId=setInterval(()=>{
-  secondCount--;
-  secondDisplay.innerText=secondCount;
-  if(secondCount==0){
-    minuteCount--;
-    minuteDisplay.innerText=minuteCount
-    clearInterval(secondCount)
+    if(secondCount!=0){
+    let secondIntervalId=setInterval(()=>{
+      if(secondCount==1){
+        clearInterval(secondIntervalId)
+      }
+    secondCount--;
+    secondDisplay.innerText=secondCount
+   }
+   ,1000)
   }
-},1000)
+ let minuteIntervalId= setInterval(()=>{
+    secondDisplay.innerText=defaultSecondCount;
+    defaultSecondCount--;
+    if(defaultSecondCount==0){
+      minuteCount--;
+           minuteCount.innerText=minuteCount;
+      defaultSecondCount=60;
+    }
+      if(minuteCount==0){
+        clearInterval(minuteIntervalId)
+      }
+ 
+    
+    secondDisplay.innerHTML=defaultSecondCount;
+    
+  },1000)
+
+    
     
 })
