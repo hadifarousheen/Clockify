@@ -18,7 +18,7 @@ hour.addEventListener('change',(e)=>{
 })
 
 minute.addEventListener('change',(e)=>{
-    minuteCount=e.target.value;
+    minuteCount=e.target.value-1;
 })
 
 second.addEventListener('change',(e)=>{
@@ -30,7 +30,7 @@ start.addEventListener('click',()=>{
   hourDisplay.innerText=hourCount
     minuteDisplay.innerText=minuteCount;
     secondDisplay.innerText=secondCount;
-    if(secondCount!=0){
+    if(secondCount!=0 && minuteCount==0 && hourCount==0){
     let secondIntervalId=setInterval(()=>{
       if(secondCount==1){
         clearInterval(secondIntervalId)
@@ -40,22 +40,34 @@ start.addEventListener('click',()=>{
    }
    ,1000)
   }
- let minuteIntervalId= setInterval(()=>{
-    secondDisplay.innerText=defaultSecondCount;
-    defaultSecondCount--;
-    if(defaultSecondCount==0){
-      minuteCount--;
-           minuteCount.innerText=minuteCount;
-      defaultSecondCount=60;
-    }
-      if(minuteCount==0){
-        clearInterval(minuteIntervalId)
-      }
+
+if(secondCount==0 && hourCount==0){
+
+  let minuteId;
+
+
+ minuteId= setInterval(()=>{
+defaultSecondCount--;
+secondDisplay.innerText=defaultSecondCount;
+if(defaultSecondCount==0){
+    minuteCount--;
+     if(minuteCount<0){
+    clearInterval(minuteId)
+  }
+   if(minuteCount>=0){
+    minuteDisplay.innerText=minuteCount;
+   }
+
+
  
-    
-    secondDisplay.innerHTML=defaultSecondCount;
-    
+  defaultSecondCount=60;
+}
+
   },1000)
+
+}
+
+
 
     
     
