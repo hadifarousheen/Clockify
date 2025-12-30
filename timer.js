@@ -30,20 +30,47 @@ second.addEventListener("change", (e) => {
   secondCount = e.target.value;
 });
 
+ let secondIntervalId;
+  let minuteId;
+   let hourId;
+
+
+ stop.addEventListener('click',()=>{
+  clearInterval(secondIntervalId);
+  clearInterval(minuteId);
+  clearInterval(hourId)
+  secondDisplay.innerText="00";
+  minuteDisplay.innerText="00";
+  hourDisplay.innerText="00";
+ })  
+
+ pause.addEventListener('click',()=>{
+  clearInterval(secondIntervalId);
+  clearInterval(minuteId);
+  clearInterval(hourId)
+ })  
+
+ resume.addEventListener('click',()=>{
+  
+ })  
+
 start.addEventListener("click", () => {
+  second.value="";
+  minute.value="";
+  hour.value="";
   hourDisplay.innerText = hourCount;
   minuteDisplay.innerText = minuteCount;
   secondDisplay.innerText = secondCount;
   if (secondCount != 0 && minuteOriginal == 0 && hourOriginal == 0) {
-    let secondIntervalId = setInterval(() => {
+     secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
-  } else if (secondCount == 0 && hourCount == 0 && minuteOriginal!=0) {
-    let minuteId;
+  } else if (secondCount == 0 && hourOriginal == 0 && minuteOriginal!=0) {
+   
 
     minuteId = setInterval(() => {
       defaultSecondCount--;
@@ -61,8 +88,8 @@ start.addEventListener("click", () => {
       }
     }, 1000);
   }
-   else if (hourCount == 0 && secondCount != 0 && minuteOriginal != 0) {
-    let secondIntervalId = setInterval(() => {
+   else if (hourOriginal == 0 && secondCount != 0 && minuteOriginal != 0) {
+     secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
 
@@ -90,7 +117,7 @@ start.addEventListener("click", () => {
   }
   else if(hourOriginal!=0 && secondCount==0 && minuteOriginal==0){
     minuteDisplay.innerText=--defaultMinuteCount;
-    let hourId=setInterval(() => {
+     hourId=setInterval(() => {
         minuteDisplay.innerText=defaultMinuteCount;
         secondDisplay.innerText=defaultSecondCount;
         defaultSecondCount--;
@@ -110,13 +137,13 @@ start.addEventListener("click", () => {
 
   }
   else if(hourOriginal!=0 && minuteOriginal==0 && secondCount!=0){
- let secondIntervalId = setInterval(() => {
+  secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
 
 
  minuteDisplay.innerText=--defaultMinuteCount;
-    let hourId=setInterval(() => {
+     hourId=setInterval(() => {
         minuteDisplay.innerText=defaultMinuteCount;
         secondDisplay.innerText=defaultSecondCount;
         defaultSecondCount--;
@@ -140,7 +167,7 @@ start.addEventListener("click", () => {
     }, 1000);
 
   } else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount==0){
-      let minuteId;
+    
 
     minuteId = setInterval(() => {
       defaultSecondCount--;
@@ -151,7 +178,7 @@ start.addEventListener("click", () => {
           clearInterval(minuteId);
 
  minuteDisplay.innerText=--defaultMinuteCount;
-    let hourId=setInterval(() => {
+     hourId=setInterval(() => {
         minuteDisplay.innerText=defaultMinuteCount;
         secondDisplay.innerText=defaultSecondCount;
         defaultSecondCount--;
@@ -178,5 +205,54 @@ start.addEventListener("click", () => {
         defaultSecondCount = 60;
       }
     }, 1000);
+  }else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount!=0){
+   
+     secondIntervalId = setInterval(() => {
+      if (secondCount == 1) {
+        clearInterval(secondIntervalId);
+
+
+        
+    minuteId = setInterval(() => {
+      defaultSecondCount--;
+      secondDisplay.innerText = defaultSecondCount;
+      if (defaultSecondCount == 0) {
+        minuteCount--;
+        if (minuteCount < 0) {
+          clearInterval(minuteId);
+
+ minuteDisplay.innerText=--defaultMinuteCount;
+     hourId=setInterval(() => {
+        minuteDisplay.innerText=defaultMinuteCount;
+        secondDisplay.innerText=defaultSecondCount;
+        defaultSecondCount--;
+        if(defaultSecondCount==0){
+          defaultMinuteCount--;
+          minuteDisplay.innerText=defaultMinuteCount;
+          if(defaultMinuteCount==0){
+            hourCount--;
+            if(hourCount==0){
+              clearInterval(hourId)
+            }
+            hourDisplay.innerText=hourCount;
+          }
+          defaultSecondCount=60;
+        }
+    }, 1000);
+
+
+        }
+        if (minuteCount >= 0) {
+          minuteDisplay.innerText = minuteCount;
+        }
+
+        defaultSecondCount = 60;
+      }
+    }, 1000);
+      }
+      secondCount--;
+      secondDisplay.innerText = secondCount;
+    }, 1000);
+
   }
 });
