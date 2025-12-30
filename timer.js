@@ -9,6 +9,7 @@ const hourDisplay = document.querySelector(".hourDisplay");
 const minuteDisplay = document.querySelector(".minuteDisplay");
 const secondDisplay = document.querySelector(".secondDisplay");
 
+let lastRunning = "";
 let hourCount = 0;
 let minuteCount = 0;
 let secondCount = 0;
@@ -50,9 +51,60 @@ second.addEventListener("change", (e) => {
   clearInterval(hourId)
  })  
 
- resume.addEventListener('click',()=>{
-  
- })  
+resume.addEventListener('click', () => {
+
+  if (lastRunning === "second") {
+    secondIntervalId = setInterval(() => {
+      if (secondCount == 1) {
+        clearInterval(secondIntervalId);
+      }
+      secondCount--;
+      secondDisplay.innerText = secondCount;
+    }, 1000);
+  }
+
+  else if (lastRunning === "minute") {
+    minuteId = setInterval(() => {
+      defaultSecondCount--;
+      secondDisplay.innerText = defaultSecondCount;
+
+      if (defaultSecondCount == 0) {
+        minuteCount--;
+        if (minuteCount < 0) {
+          clearInterval(minuteId);
+        }
+        if (minuteCount >= 0) {
+          minuteDisplay.innerText = minuteCount;
+        }
+        defaultSecondCount = 60;
+      }
+    }, 1000);
+  }
+
+  else if (lastRunning === "hour") {
+    hourId = setInterval(() => {
+      minuteDisplay.innerText = defaultMinuteCount;
+      secondDisplay.innerText = defaultSecondCount;
+      defaultSecondCount--;
+
+      if (defaultSecondCount == 0) {
+        defaultMinuteCount--;
+        minuteDisplay.innerText = defaultMinuteCount;
+
+        if (defaultMinuteCount == 0) {
+          hourCount--;
+          if (hourCount == 0) {
+            clearInterval(hourId);
+          }
+          hourDisplay.innerText = hourCount;
+        }
+        defaultSecondCount = 60;
+      }
+    }, 1000);
+  }
+
+});
+ 
 
 start.addEventListener("click", () => {
   second.value="";
@@ -69,6 +121,7 @@ start.addEventListener("click", () => {
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
+    lastRunning = "second";
   } else if (secondCount == 0 && hourOriginal == 0 && minuteOriginal!=0) {
    
 
@@ -87,13 +140,14 @@ start.addEventListener("click", () => {
         defaultSecondCount = 60;
       }
     }, 1000);
+    lastRunning = "minute";
   }
    else if (hourOriginal == 0 && secondCount != 0 && minuteOriginal != 0) {
      secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
 
-        let minuteId;
+     
 
         minuteId = setInterval(() => {
           defaultSecondCount--;
@@ -110,10 +164,14 @@ start.addEventListener("click", () => {
             defaultSecondCount = 60;
           }
         }, 1000);
+        lastRunning = "minute";
+
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
+    lastRunning = "second";
+
   }
   else if(hourOriginal!=0 && secondCount==0 && minuteOriginal==0){
     minuteDisplay.innerText=--defaultMinuteCount;
@@ -134,6 +192,7 @@ start.addEventListener("click", () => {
           defaultSecondCount=60;
         }
     }, 1000);
+    lastRunning = "hour";
 
   }
   else if(hourOriginal!=0 && minuteOriginal==0 && secondCount!=0){
@@ -160,11 +219,14 @@ start.addEventListener("click", () => {
           defaultSecondCount=60;
         }
     }, 1000);
+lastRunning = "hour";
 
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
+    lastRunning = "second";
+
 
   } else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount==0){
     
@@ -196,6 +258,7 @@ start.addEventListener("click", () => {
         }
     }, 1000);
 
+lastRunning = "hour";
 
         }
         if (minuteCount >= 0) {
@@ -205,6 +268,8 @@ start.addEventListener("click", () => {
         defaultSecondCount = 60;
       }
     }, 1000);
+    lastRunning = "minute";
+
   }else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount!=0){
    
      secondIntervalId = setInterval(() => {
@@ -239,6 +304,7 @@ start.addEventListener("click", () => {
           defaultSecondCount=60;
         }
     }, 1000);
+lastRunning = "hour";
 
 
         }
@@ -249,10 +315,14 @@ start.addEventListener("click", () => {
         defaultSecondCount = 60;
       }
     }, 1000);
+    lastRunning = "minute";
+
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
+    lastRunning = "second";
+
 
   }
 });
