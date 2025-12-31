@@ -30,8 +30,11 @@ nav{
     /* text-align: center; */
 }
 .world-title{
-    font:3rem;
-   margin-left: 3rem;
+    font-size: 3rem;
+   /* margin-left: 3rem;
+    */
+    text-align: center;
+    letter-spacing: 5px;
 }
 .container{
     border:1px solid;
@@ -39,4 +42,41 @@ nav{
     margin-right: auto;
     margin-left: auto;
     display: flex;
+    height: 50px;
+}
+.selectOptions{
+    width:85%;
+        font-size: 2rem;
+
+    
+}
+
+.getTime{
+    width:15%;
+    font-size:20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.result-div{
+    border:1px solid;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: rgb(100, 145, 146);
+   
+}
+
+.result-heading{
+    font-size:2rem;
+    letter-spacing: 5px;
+    color: black;
+     margin-left: 5px;
+}
+
+.result p{
+    font-size: 1.6rem;
+    color: black;
+    margin-left: 5px;
 }

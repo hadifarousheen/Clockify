@@ -36,13 +36,13 @@ const day=resJson.dayOfWeek;
 const timeZone=resJson.timeZone;
 
 const timeTag=document.createElement("p");
-timeTag.innerText=time;
+timeTag.innerText="Time : "+time;
 const dateTag=document.createElement('p');
-dateTag.innerText=date;
+dateTag.innerText="Date : "+date;
 const dayTag=document.createElement('p');
-dayTag.innerText=day;
+dayTag.innerText="Day : "+day;
 const timezoneTag=document.createElement('p');
-timezoneTag.innerText=timeZone;
+timezoneTag.innerText="Time Zone : "+timeZone;
 
 
 result.append(timezoneTag,dateTag,dayTag,timeTag)
