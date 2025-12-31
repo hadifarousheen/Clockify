@@ -1,12 +1,18 @@
 body,html{
     padding:0;
     margin:0;
-    background-color: #9CA3AF;
+    /* background-color: #9CA3AF; */
+        background-color: rgb(100, 145, 146);
+            font-family: sans-serif;
+
+
 }
 .main-container{
     /* background-color: rgb(41, 35, 35); */
     color:white;
-    background-color: #9CA3AF;
+    /* background-color: #9CA3AF; */
+        background-color: rgb(100, 145, 146);
+
 }
 
 nav{
@@ -22,7 +28,7 @@ nav{
     text-transform: uppercase;
     font-family: sans-serif;
     letter-spacing: 20px;
-    margin-left: 4rem;
+    margin-left: 4.5rem;
     margin-top: 0;
     margin-bottom: 0;
     /* text-align: center; */
@@ -41,6 +47,8 @@ nav{
 .am-pm{
     font-size:4rem;
     /* color: black; */
+    vertical-align: middle;
+    margin-left: 12px;
 }
 
 .secondary-container{
@@ -48,7 +56,9 @@ nav{
  margin-top: 30px;
 justify-content: center; display: flex;
 gap:45px;
-background-color: #9CA3AF;
+/* background-color: #9CA3AF; */
+    background-color: rgb(100, 145, 146);
+
 }
 .secondary-container div{
     border:1px solid black;
@@ -56,14 +66,14 @@ background-color: #9CA3AF;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size:3rem;
+    font-size:2.5rem;
     width:350px;
     border-radius: 8%;
     background-color: #0E1F3D;
     /* color:white; */
-    box-shadow: 4px 4px 4px lightskyblue;
+    box-shadow: 4px 4px 4px #0E1F3D;
 
-
+    /* text-transform: uppercase; */
 
     
 }
@@ -72,4 +82,11 @@ background-color: #9CA3AF;
 a{
     text-decoration: none;
     color:white;
+}
+
+.colon{
+    font-weight: bold;
+    margin-left: 12px;
+    margin-right: 12px;
+    
 }
