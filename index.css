@@ -23,7 +23,6 @@ nav{
 }
 .title{
     font-size: 3rem;
-    /* color:rgb(33, 33, 240); */
     font-weight: bold;
     text-transform: uppercase;
     font-family: sans-serif;
@@ -31,7 +30,6 @@ nav{
     margin-left: 4.5rem;
     margin-top: 0;
     margin-bottom: 0;
-    /* text-align: center; */
 }
 .time-display{
     /* border:1px solid; */
@@ -89,4 +87,62 @@ a{
     margin-left: 12px;
     margin-right: 12px;
     
+}
+
+@media(width <900px){
+.title{
+    font-size: 2.5rem;
+    letter-spacing: 10px;
+    /* margin-left: 1.5rem; */
+    margin-top: 0;
+    margin-bottom: 0;
+    /* text-align: left; */
+}
+.time-display{
+    /* border:1px solid; */
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    /* color:blue; */
+    background-color: rgb(6, 18, 39);
+}
+.am-pm{
+    font-size:1.2rem;
+    /* color: black; */
+    vertical-align: middle;
+    margin-left: 12px;
+}
+.secondary-container{
+
+ margin-top: 20px;
+/* justify-content: center; */
+ display: flex;
+ flex-direction: column;
+gap:10px;
+/* background-color: #9CA3AF; */
+    background-color: rgb(100, 145, 146);
+
+}
+.secondary-container div{
+    border:1px solid black;
+    height: 100px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-size:1.5rem;
+    /* width:350px; */
+    border-radius: 0%;
+    background-color: #0E1F3D;
+    /* color:white; */
+    box-shadow: 4px 4px 4px #0E1F3D;
+    width: 100%;
+
+    /* text-transform: uppercase; */
+
+    
+}
+
+
 }
