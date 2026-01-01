@@ -57,15 +57,15 @@ nav {
   justify-content: center;
 }
 .hour {
-  font-size: larger;
+  font-size: large;
   margin-right: 10px;
 }
 .minute {
-  font-size: larger;
+  font-size: large;
   margin-right: 10px;
 }
 .second {
-  font-size: larger;
+  font-size: large;
 }
 .buttons-timer {
   width: 50%;
