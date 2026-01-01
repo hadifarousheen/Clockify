@@ -38,6 +38,10 @@ nav {
   padding: 4px;
   box-shadow: 4px 4px 4px rgb(6, 18, 39);
 }
+.buttons button:hover{
+    background-color: rgb(6, 18, 39);
+    color:white;
+}
 .buttons button a {
   text-decoration: none;
   color: black;
@@ -83,6 +87,11 @@ nav {
 .buttons-timer button {
   width: 50%;
   font-size: 1.5rem;
+  font-weight: bold;
+}
+.buttons-timer button:hover{
+    background-color: rgb(100, 145, 146);
+    color: white;
 }
 .timer-display {
   width: 50%;

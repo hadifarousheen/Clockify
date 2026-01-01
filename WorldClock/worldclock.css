@@ -80,6 +80,10 @@ nav {
   padding: 4px;
   box-shadow: 4px 4px 4px rgb(6, 18, 39);
 }
+.buttons button:hover{
+    background-color: rgb(6, 18, 39);
+    color:white;
+}
 .buttons button a {
   text-decoration: none;
   color: black;

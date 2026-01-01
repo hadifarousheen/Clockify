@@ -37,10 +37,15 @@ nav {
   font-weight: bold;
   padding: 4px;
   box-shadow: 4px 4px 4px rgb(6, 18, 39);
+
 }
 .buttons button a {
   text-decoration: none;
   color: black;
+}
+.buttons button:hover{
+    background-color: rgb(6, 18, 39);
+    color:white;
 }
 .alarm-title {
   font-size: 3rem;
@@ -70,6 +75,10 @@ nav {
   width: 100%;
   font-size: larger;
   margin-top: 10px;
+}
+.save:hover{
+    background-color: rgb(100, 145, 146);
+    color:white;
 }
 .alarms {
   margin-left: auto;
