@@ -46,6 +46,9 @@ nav {
   text-decoration: none;
   color: black;
 }
+.buttons button a:hover{
+  color: white;
+}
 .timer-title {
   font-size: 3rem;
   text-align: center;

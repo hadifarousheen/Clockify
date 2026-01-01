@@ -88,6 +88,9 @@ nav {
   text-decoration: none;
   color: black;
 }
+.buttons button a:hover{
+  color: white;
+}
 
 @media (width <900px) {
   .title {
