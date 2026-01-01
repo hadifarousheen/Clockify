@@ -104,4 +104,10 @@ a:hover{
     border-radius: 0%;
     width: 100%;
   }
+  .secondary-container :first-child{
+  margin-left: 0px;
+}
+.secondary-container:last-child{
+  margin-right: 0px;
+}
 }
