@@ -35,8 +35,8 @@ reset.addEventListener('click',()=>{
     secondCount=0;
     hourCount=0;
     minuteCount=0;
-            second.innerText=secondCount;
-            minute.innerText=minuteCount;
-            hour.innerText=hourCount;
+            second.innerText="00";
+            minute.innerText="00";
+            hour.innerText="00";
 
 })

@@ -2,6 +2,7 @@ body,html{
     padding:0;
     margin:0;
     /* background-color: #9CA3AF; */
+         font-family: sans-serif;
 }
 .main-container{
     /* background-color: rgb(41, 35, 35); */
@@ -62,4 +63,52 @@ nav{
     */
     text-align: center;
     letter-spacing: 5px;
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+    width: 50%;
+    padding: 2rem;
+    
+  
+}
+.hour{
+    width:35%;
+    font-size: larger;
+    
+}
+.minute{
+    width: 35%;
+    font-size: larger;
+
+}
+.ampm{
+    width:28.5%;
+       /* margin-left: auto; */
+       font-size: larger;
+}
+.save{
+    width: 100%;
+    font-size: larger;
+    margin-top: 10px;
+}
+
+.alarms{
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid white;
+    width:50%;
+    margin-top: 10px;
+        padding: 2rem;
+
+}
+.alarms h2{
+    letter-spacing: 5px;
+}
+
+.alarms button{
+    padding:5px;
+    font-size: 18px;
+    font-weight: bold;
 }
