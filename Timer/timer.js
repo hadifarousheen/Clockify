@@ -14,12 +14,12 @@ let hourCount = 0;
 let minuteCount = 0;
 let secondCount = 0;
 let defaultSecondCount = 60;
-let minuteOriginal=0;
-let defaultMinuteCount=60;
-let hourOriginal=0;
+let minuteOriginal = 0;
+let defaultMinuteCount = 60;
+let hourOriginal = 0;
 hour.addEventListener("change", (e) => {
-  hourOriginal=e.target.value;
-  hourCount = e.target.value-1;
+  hourOriginal = e.target.value;
+  hourCount = e.target.value - 1;
 });
 
 minute.addEventListener("change", (e) => {
@@ -31,28 +31,26 @@ second.addEventListener("change", (e) => {
   secondCount = e.target.value;
 });
 
- let secondIntervalId;
-  let minuteId;
-   let hourId;
+let secondIntervalId;
+let minuteId;
+let hourId;
 
-
- stop.addEventListener('click',()=>{
+stop.addEventListener("click", () => {
   clearInterval(secondIntervalId);
   clearInterval(minuteId);
-  clearInterval(hourId)
-  secondDisplay.innerText="00";
-  minuteDisplay.innerText="00";
-  hourDisplay.innerText="00";
- })  
+  clearInterval(hourId);
+  secondDisplay.innerText = "00";
+  minuteDisplay.innerText = "00";
+  hourDisplay.innerText = "00";
+});
 
- pause.addEventListener('click',()=>{
+pause.addEventListener("click", () => {
   clearInterval(secondIntervalId);
   clearInterval(minuteId);
-  clearInterval(hourId)
- })  
+  clearInterval(hourId);
+});
 
-resume.addEventListener('click', () => {
-
+resume.addEventListener("click", () => {
   if (lastRunning === "second") {
     secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
@@ -61,9 +59,7 @@ resume.addEventListener('click', () => {
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
-  }
-
-  else if (lastRunning === "minute") {
+  } else if (lastRunning === "minute") {
     minuteId = setInterval(() => {
       defaultSecondCount--;
       secondDisplay.innerText = defaultSecondCount;
@@ -79,9 +75,7 @@ resume.addEventListener('click', () => {
         defaultSecondCount = 60;
       }
     }, 1000);
-  }
-
-  else if (lastRunning === "hour") {
+  } else if (lastRunning === "hour") {
     hourId = setInterval(() => {
       minuteDisplay.innerText = defaultMinuteCount;
       secondDisplay.innerText = defaultSecondCount;
@@ -102,19 +96,17 @@ resume.addEventListener('click', () => {
       }
     }, 1000);
   }
-
 });
- 
 
 start.addEventListener("click", () => {
-  second.value="";
-  minute.value="";
-  hour.value="";
+  second.value = "";
+  minute.value = "";
+  hour.value = "";
   hourDisplay.innerText = hourCount;
   minuteDisplay.innerText = minuteCount;
   secondDisplay.innerText = secondCount;
   if (secondCount != 0 && minuteOriginal == 0 && hourOriginal == 0) {
-     secondIntervalId = setInterval(() => {
+    secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
       }
@@ -122,9 +114,7 @@ start.addEventListener("click", () => {
       secondDisplay.innerText = secondCount;
     }, 1000);
     lastRunning = "second";
-  } else if (secondCount == 0 && hourOriginal == 0 && minuteOriginal!=0) {
-   
-
+  } else if (secondCount == 0 && hourOriginal == 0 && minuteOriginal != 0) {
     minuteId = setInterval(() => {
       defaultSecondCount--;
       secondDisplay.innerText = defaultSecondCount;
@@ -141,13 +131,10 @@ start.addEventListener("click", () => {
       }
     }, 1000);
     lastRunning = "minute";
-  }
-   else if (hourOriginal == 0 && secondCount != 0 && minuteOriginal != 0) {
-     secondIntervalId = setInterval(() => {
+  } else if (hourOriginal == 0 && secondCount != 0 && minuteOriginal != 0) {
+    secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
-
-     
 
         minuteId = setInterval(() => {
           defaultSecondCount--;
@@ -165,72 +152,61 @@ start.addEventListener("click", () => {
           }
         }, 1000);
         lastRunning = "minute";
-
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
     lastRunning = "second";
-
-  }
-  else if(hourOriginal!=0 && secondCount==0 && minuteOriginal==0){
-    minuteDisplay.innerText=--defaultMinuteCount;
-     hourId=setInterval(() => {
-        minuteDisplay.innerText=defaultMinuteCount;
-        secondDisplay.innerText=defaultSecondCount;
-        defaultSecondCount--;
-        if(defaultSecondCount==0){
-          defaultMinuteCount--;
-          minuteDisplay.innerText=defaultMinuteCount;
-          if(defaultMinuteCount==0){
-            hourCount--;
-            if(hourCount==0){
-              clearInterval(hourId)
-            }
-            hourDisplay.innerText=hourCount;
+  } else if (hourOriginal != 0 && secondCount == 0 && minuteOriginal == 0) {
+    minuteDisplay.innerText = --defaultMinuteCount;
+    hourId = setInterval(() => {
+      minuteDisplay.innerText = defaultMinuteCount;
+      secondDisplay.innerText = defaultSecondCount;
+      defaultSecondCount--;
+      if (defaultSecondCount == 0) {
+        defaultMinuteCount--;
+        minuteDisplay.innerText = defaultMinuteCount;
+        if (defaultMinuteCount == 0) {
+          hourCount--;
+          if (hourCount == 0) {
+            clearInterval(hourId);
           }
-          defaultSecondCount=60;
+          hourDisplay.innerText = hourCount;
         }
+        defaultSecondCount = 60;
+      }
     }, 1000);
     lastRunning = "hour";
-
-  }
-  else if(hourOriginal!=0 && minuteOriginal==0 && secondCount!=0){
-  secondIntervalId = setInterval(() => {
+  } else if (hourOriginal != 0 && minuteOriginal == 0 && secondCount != 0) {
+    secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
 
-
- minuteDisplay.innerText=--defaultMinuteCount;
-     hourId=setInterval(() => {
-        minuteDisplay.innerText=defaultMinuteCount;
-        secondDisplay.innerText=defaultSecondCount;
-        defaultSecondCount--;
-        if(defaultSecondCount==0){
-          defaultMinuteCount--;
-          minuteDisplay.innerText=defaultMinuteCount;
-          if(defaultMinuteCount==0){
-            hourCount--;
-            if(hourCount==0){
-              clearInterval(hourId)
+        minuteDisplay.innerText = --defaultMinuteCount;
+        hourId = setInterval(() => {
+          minuteDisplay.innerText = defaultMinuteCount;
+          secondDisplay.innerText = defaultSecondCount;
+          defaultSecondCount--;
+          if (defaultSecondCount == 0) {
+            defaultMinuteCount--;
+            minuteDisplay.innerText = defaultMinuteCount;
+            if (defaultMinuteCount == 0) {
+              hourCount--;
+              if (hourCount == 0) {
+                clearInterval(hourId);
+              }
+              hourDisplay.innerText = hourCount;
             }
-            hourDisplay.innerText=hourCount;
+            defaultSecondCount = 60;
           }
-          defaultSecondCount=60;
-        }
-    }, 1000);
-lastRunning = "hour";
-
+        }, 1000);
+        lastRunning = "hour";
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
     lastRunning = "second";
-
-
-  } else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount==0){
-    
-
+  } else if (hourOriginal != 0 && minuteOriginal != 0 && secondCount == 0) {
     minuteId = setInterval(() => {
       defaultSecondCount--;
       secondDisplay.innerText = defaultSecondCount;
@@ -239,27 +215,26 @@ lastRunning = "hour";
         if (minuteCount < 0) {
           clearInterval(minuteId);
 
- minuteDisplay.innerText=--defaultMinuteCount;
-     hourId=setInterval(() => {
-        minuteDisplay.innerText=defaultMinuteCount;
-        secondDisplay.innerText=defaultSecondCount;
-        defaultSecondCount--;
-        if(defaultSecondCount==0){
-          defaultMinuteCount--;
-          minuteDisplay.innerText=defaultMinuteCount;
-          if(defaultMinuteCount==0){
-            hourCount--;
-            if(hourCount==0){
-              clearInterval(hourId)
+          minuteDisplay.innerText = --defaultMinuteCount;
+          hourId = setInterval(() => {
+            minuteDisplay.innerText = defaultMinuteCount;
+            secondDisplay.innerText = defaultSecondCount;
+            defaultSecondCount--;
+            if (defaultSecondCount == 0) {
+              defaultMinuteCount--;
+              minuteDisplay.innerText = defaultMinuteCount;
+              if (defaultMinuteCount == 0) {
+                hourCount--;
+                if (hourCount == 0) {
+                  clearInterval(hourId);
+                }
+                hourDisplay.innerText = hourCount;
+              }
+              defaultSecondCount = 60;
             }
-            hourDisplay.innerText=hourCount;
-          }
-          defaultSecondCount=60;
-        }
-    }, 1000);
+          }, 1000);
 
-lastRunning = "hour";
-
+          lastRunning = "hour";
         }
         if (minuteCount >= 0) {
           minuteDisplay.innerText = minuteCount;
@@ -269,60 +244,51 @@ lastRunning = "hour";
       }
     }, 1000);
     lastRunning = "minute";
-
-  }else if(hourOriginal!=0 && minuteOriginal!=0 && secondCount!=0){
-   
-     secondIntervalId = setInterval(() => {
+  } else if (hourOriginal != 0 && minuteOriginal != 0 && secondCount != 0) {
+    secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
 
+        minuteId = setInterval(() => {
+          defaultSecondCount--;
+          secondDisplay.innerText = defaultSecondCount;
+          if (defaultSecondCount == 0) {
+            minuteCount--;
+            if (minuteCount < 0) {
+              clearInterval(minuteId);
 
-        
-    minuteId = setInterval(() => {
-      defaultSecondCount--;
-      secondDisplay.innerText = defaultSecondCount;
-      if (defaultSecondCount == 0) {
-        minuteCount--;
-        if (minuteCount < 0) {
-          clearInterval(minuteId);
-
- minuteDisplay.innerText=--defaultMinuteCount;
-     hourId=setInterval(() => {
-        minuteDisplay.innerText=defaultMinuteCount;
-        secondDisplay.innerText=defaultSecondCount;
-        defaultSecondCount--;
-        if(defaultSecondCount==0){
-          defaultMinuteCount--;
-          minuteDisplay.innerText=defaultMinuteCount;
-          if(defaultMinuteCount==0){
-            hourCount--;
-            if(hourCount==0){
-              clearInterval(hourId)
+              minuteDisplay.innerText = --defaultMinuteCount;
+              hourId = setInterval(() => {
+                minuteDisplay.innerText = defaultMinuteCount;
+                secondDisplay.innerText = defaultSecondCount;
+                defaultSecondCount--;
+                if (defaultSecondCount == 0) {
+                  defaultMinuteCount--;
+                  minuteDisplay.innerText = defaultMinuteCount;
+                  if (defaultMinuteCount == 0) {
+                    hourCount--;
+                    if (hourCount == 0) {
+                      clearInterval(hourId);
+                    }
+                    hourDisplay.innerText = hourCount;
+                  }
+                  defaultSecondCount = 60;
+                }
+              }, 1000);
+              lastRunning = "hour";
             }
-            hourDisplay.innerText=hourCount;
+            if (minuteCount >= 0) {
+              minuteDisplay.innerText = minuteCount;
+            }
+
+            defaultSecondCount = 60;
           }
-          defaultSecondCount=60;
-        }
-    }, 1000);
-lastRunning = "hour";
-
-
-        }
-        if (minuteCount >= 0) {
-          minuteDisplay.innerText = minuteCount;
-        }
-
-        defaultSecondCount = 60;
-      }
-    }, 1000);
-    lastRunning = "minute";
-
+        }, 1000);
+        lastRunning = "minute";
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
     }, 1000);
     lastRunning = "second";
-
-
   }
 });
