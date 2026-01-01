@@ -45,7 +45,7 @@ nav {
   margin-top: 30px;
   justify-content: center;
   display: flex;
-  gap: 45px;
+  gap: 40px;
   background-color: rgb(100, 145, 146);
 }
 .secondary-container div {
@@ -58,6 +58,12 @@ nav {
   border-radius: 16px;
   background-color: #0e1f3d;
   box-shadow: 4px 4px 4px #0e1f3d;
+}
+.secondary-container :first-child{
+  margin-left: 5px;
+}
+.secondary-container:last-child{
+  margin-right: 5px;
 }
 
 a {
