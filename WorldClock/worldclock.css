@@ -16,6 +16,8 @@ nav{
     box-shadow: 4px 4px 4px rgb(120, 176, 178) ;
   padding-top: 6px;
   padding-bottom: 6px;   
+  display: flex;
+  justify-content: space-between;
 }
 .title{
     font-size: 3rem;
@@ -80,3 +82,27 @@ nav{
     color: black;
     margin-left: 5px;
 }
+
+.buttons{
+    /* vertical-align: middle; */
+    /* border:1px solid black; */
+    display: flex;
+    align-items: center;
+
+}
+.buttons button {
+    font-size: 1.3rem;
+    /* margin-left: 4px; */
+    margin-right: 6px;
+    font-weight: bold;
+    /* border-radius: 100px; */
+    padding:4px;
+    box-shadow: 4px 4px 4px rgb(6, 18, 39) ;
+   
+}
+.buttons button a {
+    text-decoration: none;
+        color:black;
+
+}
+

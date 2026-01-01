@@ -30,10 +30,13 @@ getTime.addEventListener('click',async()=>{
 const res=await fetch(`https://timeapi.io/api/Time/current/zone?timeZone=${userSearch}`);
 const resJson=await res.json();
 console.log(resJson);
+prevResult=resJson;
 const time=resJson.time;
 const date=resJson.date;
 const day=resJson.dayOfWeek;
 const timeZone=resJson.timeZone;
+
+
 
 const timeTag=document.createElement("p");
 timeTag.innerText="Time : "+time;
@@ -44,7 +47,7 @@ dayTag.innerText="Day : "+day;
 const timezoneTag=document.createElement('p');
 timezoneTag.innerText="Time Zone : "+timeZone;
 
-
 result.append(timezoneTag,dateTag,dayTag,timeTag)
+
 
 })
