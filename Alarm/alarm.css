@@ -99,6 +99,7 @@ nav {
   padding: 5px;
   font-size: 18px;
   font-weight: bold;
+  margin-right: 5px;
 }
 
 @media (width <900px) {

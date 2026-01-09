@@ -16,16 +16,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const h1 = document.createElement("h1");
     h1.innerText = list[i].hour + " : " + list[i].minute + " : " + list[i].ampm;
     const button = document.createElement("button");
-    button.innerText = "Delete Alarm";
+    button.innerText = "DELETE";
+    const button2 = document.createElement("button");
+    button2.innerText = "STOP";
     button.addEventListener("click", () => {
       h1.remove();
       button.remove();
+      button2.remove();
+      const alarmlist = JSON.parse(localStorage.getItem("alarmList"));
+      alarmlist.splice(i, 1);
+      localStorage.setItem("alarmList", JSON.stringify(alarmlist));
+    });
+
+     
+    button2.addEventListener("click", () => {
+      button2.remove();
       const alarmlist = JSON.parse(localStorage.getItem("alarmList"));
       alarmlist.splice(i, 1);
       localStorage.setItem("alarmList", JSON.stringify(alarmlist));
     });
     alarms.appendChild(h1);
     alarms.appendChild(button);
+    alarms.appendChild(button2)
   }
 });
 
@@ -67,6 +79,7 @@ setInterval(() => {
       nowHour == alarmsStored[i].hour &&
       nowMinute == alarmsStored[i].minute
     ) {
+      
       var audio = new Audio("../Sound/alarm_sound.mp3");
       audio.play();
     }
