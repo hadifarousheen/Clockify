@@ -102,9 +102,9 @@ start.addEventListener("click", () => {
   second.value = "";
   minute.value = "";
   hour.value = "";
-  hourDisplay.innerText = hourCount;
-  minuteDisplay.innerText = minuteCount;
-  secondDisplay.innerText = secondCount;
+  hourDisplay.innerText = "00";
+  minuteDisplay.innerText = "00";
+  secondDisplay.innerText = "00";
   if (secondCount != 0 && minuteOriginal == 0 && hourOriginal == 0) {
     secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
