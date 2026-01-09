@@ -20,8 +20,10 @@ window.addEventListener("load", async () => {
     selectOptions.appendChild(option);
   }
 });
+  const div=document.createElement('div');
 
 getTime.addEventListener("click", async () => {
+  div.remove();
   const res = await fetch(
     `https://timeapi.io/api/Time/current/zone?timeZone=${userSearch}`
   );
@@ -32,6 +34,7 @@ getTime.addEventListener("click", async () => {
   const day = resJson.dayOfWeek;
   const timeZone = resJson.timeZone;
 
+
   const timeTag = document.createElement("p");
   timeTag.innerText = "Time : " + time;
   const dateTag = document.createElement("p");
@@ -41,5 +44,6 @@ getTime.addEventListener("click", async () => {
   const timezoneTag = document.createElement("p");
   timezoneTag.innerText = "Time Zone : " + timeZone;
 
-  result.append(timezoneTag, dateTag, dayTag, timeTag);
+  div.append(timezoneTag, dateTag, dayTag, timeTag);
+  result.append(div);
 });
