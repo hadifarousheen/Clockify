@@ -42,6 +42,7 @@ stop.addEventListener("click", () => {
   secondDisplay.innerText = "00";
   minuteDisplay.innerText = "00";
   hourDisplay.innerText = "00";
+  audio.pause();
 });
 
 pause.addEventListener("click", () => {
@@ -97,7 +98,8 @@ resume.addEventListener("click", () => {
     }, 1000);
   }
 });
-
+var audio = new Audio("../Sound/alarm_sound.mp3");
+   audio.loop = true;
 start.addEventListener("click", () => {
   second.value = "";
   minute.value = "";
@@ -109,6 +111,7 @@ start.addEventListener("click", () => {
     secondIntervalId = setInterval(() => {
       if (secondCount == 1) {
         clearInterval(secondIntervalId);
+           audio.play();
       }
       secondCount--;
       secondDisplay.innerText = secondCount;
@@ -122,6 +125,7 @@ start.addEventListener("click", () => {
         minuteCount--;
         if (minuteCount < 0) {
           clearInterval(minuteId);
+             audio.play();
         }
         if (minuteCount >= 0) {
           minuteDisplay.innerText = minuteCount;
@@ -143,6 +147,7 @@ start.addEventListener("click", () => {
             minuteCount--;
             if (minuteCount < 0) {
               clearInterval(minuteId);
+                 audio.play();
             }
             if (minuteCount >= 0) {
               minuteDisplay.innerText = minuteCount;
@@ -170,6 +175,7 @@ start.addEventListener("click", () => {
           hourCount--;
           if (hourCount == 0) {
             clearInterval(hourId);
+               audio.play();
           }
           hourDisplay.innerText = hourCount;
         }
@@ -194,6 +200,7 @@ start.addEventListener("click", () => {
               hourCount--;
               if (hourCount == 0) {
                 clearInterval(hourId);
+                   audio.play();
               }
               hourDisplay.innerText = hourCount;
             }
@@ -227,6 +234,7 @@ start.addEventListener("click", () => {
                 hourCount--;
                 if (hourCount == 0) {
                   clearInterval(hourId);
+                     audio.play();
                 }
                 hourDisplay.innerText = hourCount;
               }
@@ -269,6 +277,7 @@ start.addEventListener("click", () => {
                     hourCount--;
                     if (hourCount == 0) {
                       clearInterval(hourId);
+                         audio.play();
                     }
                     hourDisplay.innerText = hourCount;
                   }
