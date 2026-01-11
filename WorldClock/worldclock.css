@@ -49,6 +49,7 @@ nav {
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .result-div {
   border: 1px solid;
@@ -59,7 +60,7 @@ nav {
   background-color: rgb(100, 145, 146);
 }
 .result-heading {
-  font-size: 1rem;
+  font-size: 2rem;
   letter-spacing: 5px;
   color: black;
   margin-left: 5px;
